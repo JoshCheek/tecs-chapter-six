@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+$: << File.expand_path("../lib" , File.dirname(__FILE__))
+
+require "parser"
+
+if ARGV.empty?
+  puts "Usage: Assembler <filename>"
+  exit 1
+end
+
+parser = Parser.new
+
+File.open ARGV[0] do |file|
+  parser.tokenize(file)
+end
